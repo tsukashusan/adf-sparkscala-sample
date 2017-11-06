@@ -1,0 +1,25 @@
+{
+  "name": "MySparkOnDemandPipeline",
+  "properties": {
+    "activities": [
+      {
+        "name": "MySparkActivity",
+        "type": "HDInsightSpark",
+        "linkedServiceName": {
+            "referenceName": "MyOnDemandSparkLinkedService",
+            "type": "LinkedServiceReference"
+        },
+        "typeProperties": {
+          "rootPath": "adftutorial/spark",
+          "entryFilePath": "script/Hello-assembly-0.1.0-SNAPSHOT.jar",
+          "getDebugInfo": "Always",
+          "className": "example.Hello",
+          "sparkJobLinkedService": {
+            "referenceName": "MyStorageLinkedService",
+            "type": "LinkedServiceReference"
+          }
+        }
+      }
+    ]
+  }
+}
