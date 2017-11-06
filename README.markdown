@@ -1,9 +1,9 @@
-# adf-pyspark-sample
+# adf-sparkscala-sample
 Please edit the contents below.
 
 - MyStorageLinkedService.json
-  - `<AccountName>`.  
-  - `<AccountKey>`.
+  - `<AccountName>` 
+  - `<AccountKey>`
 
 - MyOnDemandSparkLinkedService.json
     - `<SubscriptionID>`
