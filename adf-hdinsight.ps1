@@ -1,12 +1,19 @@
 #Set variables one by one.
 $subscriptionID = "<SubscriptionID>" # Your Azure subscription ID
-$resourceGroupName = "<ResouceGroup>" # Name of the resource group
+$resourceGroupName = "<REsouceGroup>" # Name of the resource group
 $dataFactoryName = "<DataFactoryName>" # Globally unique name of the data factory
 $pipelineName = "<PipelineName>" # Name of the pipeline
+$adfLocation = "<Location>"
+$password = "<password>"
 
 #Run the following command, and enter the user name and password that you use to sign in to the Azure portal:
 Login-AzureRmAccount
 
+#$password = ConvertTo-SecureString $password -AsPlainText -Force
+#Get-AzureRmADApplication -ApplicationId ab1f13a7-f7f9-4f0d-b20a-785a026d15dc
+#New-AzureRmADServicePrincipal -ApplicationId "<ApplicationID>" -Password $password
+#Get-AzureRmADServicePrincipal -ServicePrincipalName "<ApplicationID>"
+#New-AzureRmRoleAssignment -RoleDefinitionName Contributor -ServicePrincipalName "<ApplicationID>"
 #Run the following command to view all the subscriptions for this account:
 #Get-AzureRmSubscription
 
@@ -16,10 +23,10 @@ Select-AzureRmSubscription -SubscriptionId $subscriptionID
 #Get-AzureRmLocation|select DisplayName, Location
 
 #Create the resource group: ADFTutorialResourceGroup.
-New-AzureRmResourceGroup -Name $resourceGroupName -Location "East US"
+New-AzureRmResourceGroup -Name $resourceGroupName -Location $adfLocation
 
 #Create the data factory.
-Set-AzureRmDataFactoryV2 -ResourceGroupName $resourceGroupName -Location "East US" -Name $dataFactoryName
+Set-AzureRmDataFactoryV2 -ResourceGroupName $resourceGroupName -Location $adfLocation -Name $dataFactoryName
 
 #Switch to the folder where you created JSON files, and run the following command to deploy an Azure Storage linked service:
 Set-AzureRmDataFactoryV2LinkedService -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "MyStorageLinkedService" -File "MyStorageLinkedService.json"
